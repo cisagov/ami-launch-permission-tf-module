@@ -9,7 +9,11 @@ data "aws_organizations_organization" "org" {
 # ------------------------------------------------------------------------------
 
 resource "aws_ami_launch_permission" "accounts" {
-  for_each = {for account in data.aws_organizations_organization.org.non_master_accounts : account.name => account.id if length(regexall(var.account_name_regex, account.name)) > 0}
+  for_each = {
+    for account in data.aws_organizations_organization.org.non_master_accounts :
+    account.name => account.id
+    if length(regexall(var.account_name_regex, account.name)) > 0
+  }
 
   image_id   = var.ami_id
   account_id = each.value
