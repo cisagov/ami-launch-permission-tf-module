@@ -2,17 +2,8 @@
 
 [![GitHub Build Status](https://github.com/cisagov/ami-launch-permission-tf-module/workflows/build/badge.svg)](https://github.com/cisagov/ami-launch-permission-tf-module/actions)
 
-This is a generic skeleton project that can be used to quickly get a
-new [cisagov](https://github.com/cisagov) [Terraform
-module](https://www.terraform.io/docs/modules/index.html) GitHub
-repository started.  This skeleton project contains [licensing
-information](LICENSE), as well as [pre-commit
-hooks](https://pre-commit.com) and
-[GitHub Actions](https://github.com/features/actions) configurations
-appropriate for the major languages that we use.
-
-See [here](https://www.terraform.io/docs/modules/index.html) for more
-details on Terraform modules and the standard module structure.
+A Terraform module for giving one or more (non-master) accounts in an AWS
+organization permission to launch an AMI.
 
 ## Usage ##
 
@@ -20,39 +11,32 @@ details on Terraform modules and the standard module structure.
 module "example" {
   source = "github.com/cisagov/ami-launch-permission-tf-module"
 
-  aws_region            = "us-west-1"
-  aws_availability_zone = "b"
-  subnet_id             = "subnet-0123456789abcdef0"
-
-  tags = {
-    Key1 = "Value1"
-    Key2 = "Value2"
+  providers = {
+    aws        = aws
+    aws.master = aws.master
   }
+
+  account_name_regex = "^env"
+  ami_id             = "ami-0123456789abcdef0"
 }
 ```
 
 ## Examples ##
 
-* [Deploying into the default VPC](https://github.com/cisagov/ami-launch-permission-tf-module/tree/develop/examples/default_vpc)
+* [Adding Launch Permissions to an AMI for All Accounts Named "env*"](https://github.com/cisagov/ami-launch-permission-tf-module/tree/develop/examples/account_names_starting_with_env)
 
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-------:|:--------:|
-| aws_region | The AWS region to deploy into (e.g. us-east-1) | string | | yes |
-| aws_availability_zone | The AWS availability zone to deploy into (e.g. a, b, c, etc.) | string | | yes |
-| subnet_id | The ID of the AWS subnet to deploy into (e.g. subnet-0123456789abcdef0) | string | | yes |
-| tags | Tags to apply to all AWS resources created | map(string) | `{}` | no |
+| account_name_regex | A regular expression that will be applied against the names of all accounts in the AWS organization.  If the name of an account matches the regular expression, that account will be allowed to launch the specified AMI. | string | | yes |
+| ami_id | The ID of the AMI to assign launch permissions to. | string | | yes |
 
 ## Outputs ##
 
 | Name | Description |
 |------|-------------|
-| id | The EC2 instance ID |
-| arn | The EC2 instance ARN |
-| availability_zone | The AZ where the EC2 instance is deployed |
-| private_ip | The private IP of the EC2 instance |
-| subnet_id | The ID of the subnet where the EC2 instance is deployed |
+| accounts | A map whose keys are the account names allowed to launch the AMI and whose values are the account IDs and the AMI ID. |
 
 ## Contributing ##
 
