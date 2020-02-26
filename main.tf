@@ -1,62 +1,16 @@
-# ------------------------------------------------------------------------------
-# DEPLOY THE EXAMPLE AMI FROM cisagov/skeleton-packer IN AWS
-#
-# Deploy the example AMI from cisagov/skeleton-packer in AWS.
-# ------------------------------------------------------------------------------
-
-# The AWS account ID being used
-data "aws_caller_identity" "current" {}
-
-# ------------------------------------------------------------------------------
-# AUTOMATICALLY LOOK UP THE LATEST PRE-BUILT EXAMPLE AMI FROM
-# cisagov/skeleton-packer.
-#
-# NOTE: This Terraform data source must return at least one AMI result
-# or the apply will fail.
-# ------------------------------------------------------------------------------
-
-# The AMI from cisagov/skeleton-packer
-data "aws_ami" "example" {
-  filter {
-    name = "name"
-    values = [
-      # Use the bastion AMI until the cisagov/skeleton-packer repo is
-      # ready
-      "cyhy-bastion-hvm-*-x86_64-ebs",
-    ]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  filter {
-    name   = "root-device-type"
-    values = ["ebs"]
-  }
-
-  owners      = [data.aws_caller_identity.current.account_id] # This is us
-  most_recent = true
+# The organization's data
+data "aws_organizations_organization" "org" {
+  provider = aws.master
 }
 
-# The example EC2 instance
-resource "aws_instance" "example" {
-  ami               = data.aws_ami.example.id
-  instance_type     = "t3.micro"
-  availability_zone = "${var.aws_region}${var.aws_availability_zone}"
-  subnet_id         = var.subnet_id
+# ------------------------------------------------------------------------------
+# Add launch permissions for all non-master accounts in the organization
+# whose names match the account_name_regex.
+# ------------------------------------------------------------------------------
 
-  tags = merge(
-    var.tags,
-    {
-      "Name" = "Example"
-    },
-  )
-  volume_tags = merge(
-    var.tags,
-    {
-      "Name" = "Example"
-    },
-  )
+resource "aws_ami_launch_permission" "accounts" {
+  for_each = {for account in data.aws_organizations_organization.org.non_master_accounts : account.name => account.id if length(regexall(var.account_name_regex, account.name)) > 0}
+
+  image_id   = var.ami_id
+  account_id = each.value
 }
