@@ -4,16 +4,12 @@
 # You must provide a value for each of these parameters.
 # ------------------------------------------------------------------------------
 
-variable "aws_region" {
-  description = "The AWS region to deploy into (e.g. us-east-1)"
+variable "account_name_regex" {
+  description = "A regular expression that will be applied against the names of all accounts in the AWS organization.  If the name of an account matches the regular expression, that account will be allowed to launch the specified AMI."
 }
 
-variable "aws_availability_zone" {
-  description = "The AWS availability zone to deploy into (e.g. a, b, c, etc.)"
-}
-
-variable "subnet_id" {
-  description = "The ID of the AWS subnet to deploy into (e.g. subnet-0123456789abcdef0)"
+variable "ami_id" {
+  description = "The ID of the AMI to assign launch permissions to."
 }
 
 # ------------------------------------------------------------------------------
@@ -21,9 +17,3 @@ variable "subnet_id" {
 #
 # These parameters have reasonable defaults.
 # ------------------------------------------------------------------------------
-
-variable "tags" {
-  type        = map(string)
-  description = "Tags to apply to all AWS resources created"
-  default     = {}
-}
