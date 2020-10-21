@@ -28,6 +28,19 @@ For reference, Terraform's regular expression syntax is documented
 
 * [Adding Launch Permissions to an AMI for All Accounts Named "env*"](https://github.com/cisagov/ami-launch-permission-tf-module/tree/develop/examples/account_names_starting_with_env)
 
+## Requirements ##
+
+| Name | Version |
+|------|---------|
+| terraform | ~> 0.12.0 |
+| aws | ~> 2.0 |
+
+## Providers ##
+
+| Name | Version |
+|------|---------|
+| aws | ~> 2.0 |
+
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
@@ -40,6 +53,12 @@ For reference, Terraform's regular expression syntax is documented
 | Name | Description |
 |------|-------------|
 | accounts | A map whose keys are the account names allowed to launch the AMI and whose values are the account IDs and the AMI ID. |
+
+## Notes ##
+
+Running `pre-commit` requires running `terraform init` in every directory that
+contains Terraform code. In this repository, these are the main directory and
+every directory under `examples/`.
 
 ## Contributing ##
 
