@@ -55,6 +55,12 @@ For reference, Terraform's regular expression syntax is documented
 |------|-------------|
 | accounts | A map whose keys are the account names allowed to launch the AMI and whose values are the account IDs and the AMI ID. |
 
+## Notes ##
+
+Running `pre-commit` requires running `terraform init` in every directory that
+contains Terraform code. In this repository, these are the main directory and
+every directory under `examples/`.
+
 ## Contributing ##
 
 We welcome contributions!  Please see [here](CONTRIBUTING.md) for
