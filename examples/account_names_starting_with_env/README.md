@@ -10,11 +10,29 @@ Terraform will prompt you for an AMI ID to assign the launch permissions to.
 Note that this example may create resources which cost money. Run
 `terraform destroy` when you no longer need these resources.
 
+## Requirements ##
+
+No requirements.
+
+## Providers ##
+
+No providers.
+
+## Modules ##
+
+| Name | Source | Version |
+|------|--------|---------|
+| example | ../../ |  |
+
+## Resources ##
+
+No resources.
+
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-------:|:--------:|
-| ami_id | The ID of the AMI to assign launch permissions to. | string | | yes |
+|------|-------------|------|---------|:--------:|
+| ami\_id | The ID of the AMI to assign launch permissions to. | `any` | n/a | yes |
 
 ## Outputs ##
 

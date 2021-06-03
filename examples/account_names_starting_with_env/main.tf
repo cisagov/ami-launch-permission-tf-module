@@ -1,14 +1,24 @@
 # Default AWS provider (EC2AMICreate role in the Images account)
 provider "aws" {
-  region  = "us-east-1"
+  default_tags {
+    tags = {
+      Testing = true
+    }
+  }
   profile = "cool-images-ec2amicreate"
+  region  = "us-east-1"
 }
 
 # AWS provider for the Master account (OrganizationsReadOnly role)
 provider "aws" {
-  region  = "us-east-1"
+  alias = "master"
+  default_tags {
+    tags = {
+      Testing = true
+    }
+  }
   profile = "cool-master-organizationsreadonly"
-  alias   = "master"
+  region  = "us-east-1"
 }
 
 #-------------------------------------------------------------------------------
