@@ -32,7 +32,7 @@ No resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| ami\_id | The ID of the AMI to assign launch permissions to. | `any` | n/a | yes |
+| ami\_id | The ID of the AMI to assign launch permissions to. | `string` | n/a | yes |
 
 ## Outputs ##
 

@@ -57,8 +57,8 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| account\_name\_regex | A regular expression that will be applied against the names of all accounts in the AWS organization.  If the name of an account matches the regular expression, that account will be allowed to launch the specified AMI. | `any` | n/a | yes |
-| ami\_id | The ID of the AMI to assign launch permissions to. | `any` | n/a | yes |
+| account\_name\_regex | A regular expression that will be applied against the names of all accounts in the AWS organization.  If the name of an account matches the regular expression, that account will be allowed to launch the specified AMI. | `string` | n/a | yes |
+| ami\_id | The ID of the AMI to assign launch permissions to. | `string` | n/a | yes |
 
 ## Outputs ##
 

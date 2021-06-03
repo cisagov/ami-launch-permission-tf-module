@@ -6,6 +6,7 @@
 
 variable "ami_id" {
   description = "The ID of the AMI to assign launch permissions to."
+  type        = string
 }
 
 # ------------------------------------------------------------------------------
