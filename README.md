@@ -33,21 +33,32 @@ For reference, Terraform's regular expression syntax is documented
 | Name | Version |
 |------|---------|
 | terraform | ~> 0.12.0 |
-| aws | ~> 3.0 |
+| aws | ~> 3.38 |
 
 ## Providers ##
 
 | Name | Version |
 |------|---------|
-| aws | ~> 3.0 |
-| aws.master | ~> 3.0 |
+| aws | ~> 3.38 |
+| aws.master | ~> 3.38 |
+
+## Modules ##
+
+No modules.
+
+## Resources ##
+
+| Name | Type |
+|------|------|
+| [aws_ami_launch_permission.accounts](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ami_launch_permission) | resource |
+| [aws_organizations_organization.org](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/organizations_organization) | data source |
 
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| account_name_regex | A regular expression that will be applied against the names of all accounts in the AWS organization.  If the name of an account matches the regular expression, that account will be allowed to launch the specified AMI. | `any` | n/a | yes |
-| ami_id | The ID of the AMI to assign launch permissions to. | `any` | n/a | yes |
+| account\_name\_regex | A regular expression that will be applied against the names of all accounts in the AWS organization.  If the name of an account matches the regular expression, that account will be allowed to launch the specified AMI. | `string` | n/a | yes |
+| ami\_id | The ID of the AMI to assign launch permissions to. | `string` | n/a | yes |
 
 ## Outputs ##
 
