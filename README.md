@@ -26,7 +26,7 @@ For reference, Terraform's regular expression syntax is documented
 
 ## Examples ##
 
-* [Adding Launch Permissions to an AMI for All Accounts Named "env*"](https://github.com/cisagov/ami-launch-permission-tf-module/tree/develop/examples/account_names_starting_with_env)
+- [Adding Launch Permissions to an AMI for All Accounts Named "env*"](https://github.com/cisagov/ami-launch-permission-tf-module/tree/develop/examples/account_names_starting_with_env)
 
 ## Requirements ##
 
