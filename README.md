@@ -28,19 +28,20 @@ For reference, Terraform's regular expression syntax is documented
 
 - [Adding Launch Permissions to an AMI for All Accounts Named "env*"](https://github.com/cisagov/ami-launch-permission-tf-module/tree/develop/examples/account_names_starting_with_env)
 
+<!-- BEGIN_TF_DOCS -->
 ## Requirements ##
 
 | Name | Version |
 |------|---------|
 | terraform | ~> 1.0 |
-| aws | ~> 3.38 |
+| aws | ~> 4.9 |
 
 ## Providers ##
 
 | Name | Version |
 |------|---------|
-| aws | ~> 3.38 |
-| aws.master | ~> 3.38 |
+| aws | ~> 4.9 |
+| aws.master | ~> 4.9 |
 
 ## Modules ##
 
@@ -66,6 +67,7 @@ No modules.
 | Name | Description |
 |------|-------------|
 | accounts | A map whose keys are the IDs of the AWS accounts allowed to launch the AMI, and whose values are the aws\_ami\_launch\_permission resources for the corresponding launch permissions. |
+<!-- END_TF_DOCS -->
 
 ## Notes ##
 
