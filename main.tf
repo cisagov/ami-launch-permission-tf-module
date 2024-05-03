@@ -17,6 +17,6 @@ resource "aws_ami_launch_permission" "accounts" {
     if length(regexall(var.account_name_regex, account.name)) > 0
   ], var.extraorg_account_ids))
 
-  image_id   = var.ami_id
   account_id = each.value
+  image_id   = var.ami_id
 }
