@@ -10,6 +10,7 @@ Terraform will prompt you for an AMI ID to assign the launch permissions to.
 Note that this example may create resources which cost money. Run
 `terraform destroy` when you no longer need these resources.
 
+<!-- BEGIN_TF_DOCS -->
 ## Requirements ##
 
 | Name | Version |
@@ -42,3 +43,4 @@ No resources.
 | Name | Description |
 |------|-------------|
 | accounts | A map whose keys are the account names allowed to launch the AMI and whose values are the account IDs and the AMI ID. |
+<!-- END_TF_DOCS -->
