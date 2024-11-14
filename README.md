@@ -33,15 +33,15 @@ For reference, Terraform's regular expression syntax is documented
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 1.0 |
-| aws | ~> 4.9 |
+| terraform | >= 1.1 |
+| aws | >= 4.9 |
 
 ## Providers ##
 
 | Name | Version |
 |------|---------|
-| aws | ~> 4.9 |
-| aws.master | ~> 4.9 |
+| aws | >= 4.9 |
+| aws.master | >= 4.9 |
 
 ## Modules ##
 
