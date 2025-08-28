@@ -9,7 +9,7 @@ organization permission to launch an AMI.
 
 ```hcl
 module "example" {
-  source = "github.com/cisagov/ami-launch-permission-tf-module"
+  source = "github.com/cisagov/ami-launch-permission-tf-module?ref=v1.0.0"
 
   providers = {
     aws        = aws
