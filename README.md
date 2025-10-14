@@ -21,8 +21,9 @@ module "example" {
 }
 ```
 
-For reference, Terraform's regular expression syntax is documented
-[here](https://www.terraform.io/docs/configuration/functions/regex.html).
+For reference, Terraform's regular expression syntax is documented in
+the [Terraform
+documentation](https://www.terraform.io/docs/configuration/functions/regex.html).
 
 ## Examples ##
 
