@@ -14,7 +14,7 @@ Note that this example may create resources which cost money. Run
 ## Requirements ##
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | terraform | ~> 1.1 |
 | aws | ~> 6.7 |
 
@@ -25,7 +25,7 @@ No providers.
 ## Modules ##
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | example | ../../ | n/a |
 
 ## Resources ##
@@ -35,12 +35,12 @@ No resources.
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | ami\_id | The ID of the AMI to assign launch permissions to. | `string` | n/a | yes |
 
 ## Outputs ##
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | accounts | A map whose keys are the account names allowed to launch the AMI and whose values are the account IDs and the AMI ID. |
 <!-- END_TF_DOCS -->
